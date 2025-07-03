@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Uygulaması</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Blog Uygulaması</h1>
+            <a href="/new-post" class="btn">Yeni Post Ekle</a>
+        </header>
+
+        <!-- Post listesi -->
+        <div class="posts">
+            <% if (posts.length === 0) { %>
+                <p class="no-posts">Henüz hiç post yok. İlk postu oluşturmak için "Yeni Post Ekle" butonuna tıklayın.</p>
+            <% } else { %>
+                <% posts.forEach(post => { %>
+                    <div class="post-card">
+                        <h2><%= post.title %></h2>
+                        <p class="post-date"><%= post.createdAt %></p>
+                        <div class="post-content">
+                            <%= post.content %>
+                        </div>
+                        <div class="post-actions">
+                            <a href="/edit-post/<%= post.id %>" class="btn edit-btn">Düzenle</a>
+                            <form action="/delete-post/<%= post.id %>" method="POST" class="delete-form">
+                                <button type="submit" class="btn delete-btn">Sil</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

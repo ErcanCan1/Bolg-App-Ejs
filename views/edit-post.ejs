@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Düzenle</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Post Düzenle</h1>
+            <a href="/" class="btn">Geri Dön</a>
+        </header>
+
+        <form action="/update-post/<%= post.id %>" method="POST" class="post-form">
+            <div class="form-group">
+                <label for="title">Başlık</label>
+                <input type="text" id="title" name="title" value="<%= post.title %>" required>
+            </div>
+            <div class="form-group">
+                <label for="content">İçerik</label>
+                <textarea id="content" name="content" rows="10" required><%= post.content %></textarea>
+            </div>
+            <button type="submit" class="btn submit-btn">Güncelle</button>
+        </form>
+    </div>
+</body>
+</html>
